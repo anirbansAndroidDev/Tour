@@ -19,7 +19,8 @@
         <activity
             android:name="com.example.demo.LoginMainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,45 +30,55 @@
         <activity
             android:name="com.example.demo.Tab_MainViewActivity"
             android:label="@string/app_name"
-            android:theme="@style/MyThemeForTab" >
+            android:theme="@style/MyThemeForTab" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.tabActivity.TourMainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.tabActivity.Tab2"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.tabActivity.Tab3"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.tabActivity.Tab4"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.demo.TourEntryActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.demo.Expense_Tab"
-            android:label="@string/title_activity_paymet__customer_to_catch__expense" >
+            android:label="@string/title_activity_paymet__customer_to_catch__expense" 
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name="com.example.demo.Tab_PaymetCustomerToCatchExpense"
             android:label="@string/title_activity_expense_detail_level_tab_view"
             android:theme="@style/MyThemeForTab"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden" 
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name="com.example.demo.CustomerToVisit_Tab"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main" 
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name="com.example.demo.CustomerToCatch_Tab"
-            android:label="@string/title_activity_customer_to_catch__tab" >
+            android:label="@string/title_activity_customer_to_catch__tab" 
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
     </application>
 

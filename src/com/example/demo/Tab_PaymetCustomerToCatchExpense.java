@@ -62,7 +62,7 @@ public class Tab_PaymetCustomerToCatchExpense extends TabActivity {
 		tabHost.addTab(Tab3);
 
 
-		tabHost.setCurrentTab(0);
+		tabHost.setCurrentTab(1);
 
 	     //Changing tab height===============================
 	       tabHost.getTabWidget().getChildAt(0).getLayoutParams().height =80;
@@ -82,6 +82,7 @@ public class Tab_PaymetCustomerToCatchExpense extends TabActivity {
 //
 //		setSelectedTabColor();
 	}
+	
 
 //	//changing background tabview colors 
 //	private void setSelectedTabColor() 

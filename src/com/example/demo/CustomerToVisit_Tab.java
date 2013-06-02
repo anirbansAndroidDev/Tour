@@ -26,6 +26,7 @@ import org.w3c.dom.NodeList;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.app.TabActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -36,11 +37,16 @@ import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
@@ -53,11 +59,14 @@ public class CustomerToVisit_Tab extends Activity {
 	TableRow customerToCatchTblRow;
 
 	private ProgressDialog pgLogin;
+	boolean activityFlag;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.customer_to_visit_tab);
+		
+		activityFlag = false;
 		//==========================Tour List Detail table=================================================
 
 		customerToCatchTbl=(TableLayout) findViewById(R.id.Tour_Expense_List_Detail_Tbl);
@@ -127,6 +136,14 @@ public class CustomerToVisit_Tab extends Activity {
 		remarks.setPadding(5,5,5,5);
 		tour_details_head.addView(remarks);// add the column to the table row here
 		remarks.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12); 
+		
+		final TextView report = new TextView(this);
+		report.setId(20);
+		report.setText("Report");
+		report.setTextColor(Color.WHITE);
+		report.setPadding(5,5,5,5);
+		tour_details_head.addView(report);// add the column to the table row here
+		report.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12); 
 		
 		final TextView csCode = new TextView(this);
 		csCode.setId(20);
@@ -287,9 +304,10 @@ public class CustomerToVisit_Tab extends Activity {
 					String PersonVisited = "" + ((Element)CustomerToVisit.item(i)).getAttribute("PersonVisited");	
 					String Remarks 		 = "" + ((Element)CustomerToVisit.item(i)).getAttribute("Remarks");	
 					String CS_NAME 		 = "" + ((Element)CustomerToVisit.item(i)).getAttribute("CS_NAME");	
-					String csCode 		 = "" + ((Element)CustomerToVisit.item(i)).getAttribute("CS_CODE");	
+					String csCode 		 = "" + ((Element)CustomerToVisit.item(i)).getAttribute("CS_CODE");
+					String ReportLink 		 = "" + ((Element)CustomerToVisit.item(i)).getAttribute("ReportLink");
 
-					createTableBody(Visit,Pmt,Visited,Tm,PersonVisited,Remarks,CS_NAME,csCode); 
+					createTableBody(Visit,Pmt,Visited,Tm,PersonVisited,Remarks,CS_NAME,csCode,ReportLink); 
 				}
 				
 				if (pgLogin.isShowing()) {
@@ -318,7 +336,7 @@ public class CustomerToVisit_Tab extends Activity {
 	//============================================================================================================
 	//Creating table body
 	//============================================================================================================
-	private void createTableBody(String Visit, String Pmt, String Visited, String Tm, String PersonVisited, String Remarks, String CS_NAME, String csCode) 
+	private void createTableBody(String Visit, String Pmt, String Visited, String Tm, String PersonVisited, String Remarks, String CS_NAME, String csCode, final String ReportLink) 
 	{
 		//----------------table body------------------------------------------
 		customerToCatchTblRow = new TableRow(this);
@@ -468,6 +486,33 @@ public class CustomerToVisit_Tab extends Activity {
 		params7.setMargins(0, 0, 5, 0); //substitute parameters for left, top, right, bottom
 		remarks.setLayoutParams(params7);
 		
+		int id = getResources().getIdentifier("com.example.demo:drawable/report", null, null);
+		
+		final ImageView imageReport = new ImageView(this);
+		imageReport.setId(20);
+		imageReport.setPadding(5,5,5,5);
+		imageReport.setImageResource(id);
+		customerToCatchTblRow.addView(imageReport);// add the column to the table row here
+		LinearLayout.LayoutParams params9 = (LinearLayout.LayoutParams)imageReport.getLayoutParams();
+		params9.gravity = Gravity.LEFT;
+		imageReport.setLayoutParams(params9);
+		
+		//Delete a particular row
+		imageReport.setOnClickListener(new OnClickListener()
+	    {
+	        @Override 
+	        public void onClick(View v)
+	        {
+	        	activityFlag = true;
+	        	WebView mWebView=new WebView(CustomerToVisit_Tab.this);
+	            mWebView.getSettings().setJavaScriptEnabled(true);
+	            mWebView.getSettings().setPluginsEnabled(true);
+
+	            mWebView.loadUrl("https://docs.google.com/gview?embedded=true&url="+ReportLink);
+	            setContentView(mWebView);
+	        }
+	    });
+		
 		final EditText csCodeValue = new EditText(this);
 		csCodeValue.setId(20);
 		csCodeValue.setText(csCode);
@@ -511,8 +556,6 @@ public class CustomerToVisit_Tab extends Activity {
 	
 	//============================================================================================================
 	//Save data
-//	TableLayout customerToCatchTbl;
-//	TableRow customerToCatchTblRow;
 	//============================================================================================================
 	public void SaveData(View v) {
 		
@@ -532,7 +575,7 @@ public class CustomerToVisit_Tab extends Activity {
             EditText visitedDate    = (EditText) row1.getChildAt(4);
             EditText personVisited  = (EditText) row1.getChildAt(5);
             EditText remarks    	= (EditText) row1.getChildAt(6);
-            EditText csCode         = (EditText) row1.getChildAt(7);
+            EditText csCode         = (EditText) row1.getChildAt(8);
             
             
             String pmtValue;
@@ -794,4 +837,16 @@ public class CustomerToVisit_Tab extends Activity {
 	//Preference variable
 	//===================================================================================================================================
 
+	@Override
+	public void onBackPressed() {
+		if(activityFlag)
+		{
+			Intent detalTabView = new Intent(CustomerToVisit_Tab.this, Tab_PaymetCustomerToCatchExpense.class);
+			startActivity(detalTabView);
+		}
+		else
+		{
+			super.onBackPressed();
+		}
+	}
 }

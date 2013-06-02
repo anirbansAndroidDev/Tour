@@ -42,24 +42,26 @@ public final class R {
         public static final int light_fade=0x7f02000f;
         public static final int login_icon=0x7f020010;
         public static final int plus=0x7f020011;
-        public static final int text_bg=0x7f020012;
-        public static final int tick=0x7f020013;
-        public static final int title_bar=0x7f020014;
-        public static final int tour_detail_tbl_header=0x7f020015;
-        public static final int tour_icon=0x7f020016;
-        public static final int tour_icon_faded=0x7f020017;
-        public static final int tour_list_detail_tbl_row_bg=0x7f020018;
+        public static final int report=0x7f020012;
+        public static final int text_bg=0x7f020013;
+        public static final int tick=0x7f020014;
+        public static final int title_bar=0x7f020015;
+        public static final int tour_detail_tbl_header=0x7f020016;
+        public static final int tour_icon=0x7f020017;
+        public static final int tour_icon_faded=0x7f020018;
+        public static final int tour_list_detail_tbl_row_bg=0x7f020019;
     }
     public static final class id {
         public static final int Tour_Expense_List_Detail_Tbl=0x7f090019;
         public static final int Tour_List_Detail_Tbl=0x7f090018;
         public static final int UserType=0x7f090002;
-        public static final int action_settings=0x7f090028;
-        public static final int date=0x7f090025;
+        public static final int action_settings=0x7f09002a;
+        public static final int blank_centered_text=0x7f090023;
+        public static final int date=0x7f090027;
         public static final int heading_textView=0x7f090006;
         public static final int imageViewLoginIcon=0x7f090005;
-        public static final int menu_settings=0x7f090027;
-        public static final int name=0x7f090026;
+        public static final int menu_settings=0x7f090029;
+        public static final int name=0x7f090028;
         public static final int passwordEditText=0x7f090000;
         public static final int quitButton=0x7f090004;
         public static final int saveButton=0x7f09001a;
@@ -83,14 +85,15 @@ public final class R {
         public static final int textViewMktBoyMobileNoValue=0x7f090013;
         public static final int textViewNameOfTour=0x7f090009;
         public static final int textViewNameOfTourValue=0x7f09000a;
-        public static final int textViewTotalAmtVal=0x7f090023;
+        public static final int textViewSec=0x7f090024;
+        public static final int textViewTotalAmtVal=0x7f090025;
         public static final int textViewTourByBranch=0x7f09000c;
         public static final int textViewTourByBranchValue=0x7f09000d;
         public static final int textViewTourByMktBoy=0x7f09000f;
         public static final int textViewTourByMktBoyValue=0x7f090010;
         public static final int textViewTourStartDate=0x7f090015;
         public static final int textViewTourStartDateValue=0x7f090016;
-        public static final int tour_name=0x7f090024;
+        public static final int tour_name=0x7f090026;
         public static final int userNameEditText=0x7f090001;
     }
     public static final class layout {

@@ -842,6 +842,7 @@ public class CustomerToVisit_Tab extends Activity {
 		if(activityFlag)
 		{
 			Intent detalTabView = new Intent(CustomerToVisit_Tab.this, Tab_PaymetCustomerToCatchExpense.class);
+			finish();
 			startActivity(detalTabView);
 		}
 		else
